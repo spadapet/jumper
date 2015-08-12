@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ProjectName>jumper.parsetypes</ProjectName>
+    <ProjectGuid>{761c4c10-f8e8-47f5-982b-e577d416a23c}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="..\ffcore\msbuild\cpp.props" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\ffcore\core\util</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
+      <ModuleDefinitionFile>module.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ffcore\core\util\util.vcxproj">
+      <Project>{8877ef09-1cdd-4e67-95ba-58e3b251b7d8}</Project>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\game\Core\LevelData.cpp" />
+    <ClCompile Include="..\game\Core\TileSet.cpp" />
+    <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <None Include="module.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\game\Core\LevelData.h" />
+    <ClInclude Include="..\game\Core\TileSet.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <Import Project="..\ffcore\msbuild\cpp.targets" />
+  <Target Name="AfterBuild">
+    <!-- Copy output files to other projects that reference them -->
+    <PropertyGroup>
+      <DestProjects>respack</DestProjects>
+    </PropertyGroup>
+    <ItemGroup>
+      <DestProjects Include="$(DestProjects)" />
+      <DestFolders Include="$(ConfigOutRoot)%(DestProjects.Identity)\bin" />
+    </ItemGroup>
+    <MakeDir Directories="@(DestFolders)" />
+    <Copy SourceFiles="$(ConfigOutRoot)jumper.parsetypes\bin\jumper.parsetypes.dll" DestinationFolder="%(DestFolders.Identity)" SkipUnchangedFiles="True" />
+  </Target>
+</Project>

@@ -1,0 +1,111 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ff="clr-namespace:ff"
+    xmlns:jumper="clr-namespace:Jumper"
+    Width="300"
+    FontFamily="Segoe UI"
+    Foreground="White"
+    DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}">
+
+    <UserControl.Resources>
+        <ff:BoolToObjectConverter x:Key="ErrorToBrushConverter">
+            <ff:BoolToObjectConverter.FalseValue>
+                <SolidColorBrush Color="Transparent" />
+            </ff:BoolToObjectConverter.FalseValue>
+            <ff:BoolToObjectConverter.TrueValue>
+                <SolidColorBrush Color="Red" />
+            </ff:BoolToObjectConverter.TrueValue>
+        </ff:BoolToObjectConverter>
+
+        <DataTemplate x:Key="ValueTemplate" x:DataType="jumper:ValueHolder">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="12" Text="{Binding PropertyName}" Margin="0,0,5,0" VerticalAlignment="Center" />
+                <Border BorderBrush="{Binding Error, Converter={StaticResource ErrorToBrushConverter}}" BorderThickness="2" VerticalAlignment="Center">
+                    <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12" Width="{Binding TextEditWidth}" Height="20" MinWidth="0" MinHeight="0" Padding="1" BorderThickness="1" />
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="BoolTemplate" x:DataType="jumper:BoolHolder">
+            <CheckBox IsChecked="{Binding Value, Mode=TwoWay}" Content="{Binding PropertyName}" Padding="5,0,0,0"  Margin="0,2" FontSize="12" MinHeight="0" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="EventTemplate" x:DataType="jumper:EventHolder">
+            <Button Command="{Binding EventCommand}" Content="{Binding PropertyName}" Padding="5,1"  Margin="0,2" FontSize="12" />
+        </DataTemplate>
+
+        <jumper:ValueHolderTemplateSelector
+            x:Key="ValueHolderTemplateSelector"
+            ValueTemplate="{StaticResource ValueTemplate}"
+            BoolTemplate="{StaticResource BoolTemplate}"
+            EventTemplate="{StaticResource EventTemplate}" />
+
+        <DataTemplate x:Key="PropertyCategoryDataTemplate" x:DataType="jumper:PropertyCategory">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border Padding="5" Background="#333333">
+                    <TextBlock Grid.Row="0" Text="{Binding Name}" />
+                </Border>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding Properties}" ItemTemplateSelector="{StaticResource ValueHolderTemplateSelector}" Margin="5" IsTabStop="False">
+                    <ItemsControl.Template>
+                        <ControlTemplate TargetType="ItemsControl">
+                            <Border>
+                                <ItemsPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                </ItemsControl>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border Background="#80000000" BorderBrush="White" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border BorderBrush="White" BorderThickness="0,0,0,1" Background="#555555">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Padding="5">
+                        <TextBlock Text="Debug" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </Border>
+                    <Button Grid.Column="1" Content="Reset Values" FontSize="12" Click="OnResetButtonClick" Margin="5,0" VerticalAlignment="Stretch" Visibility="{Binding IsCheatingEnabled, Converter={StaticResource BoolToVisibleConverter}}" />
+                    <Button Grid.Column="2" Content="" FontSize="12" Click="OnCloseButtonClick" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Stretch" />
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding Categories}" ItemTemplate="{StaticResource PropertyCategoryDataTemplate}" IsTabStop="False" MaxHeight="300" Visibility="{Binding IsCheatingEnabled, Converter={StaticResource BoolToVisibleConverter}}">
+                    <ItemsControl.Template>
+                        <ControlTemplate TargetType="ItemsControl">
+                            <ScrollViewer>
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                </ItemsControl>
+                <StackPanel x:Name="NoItemsRoot" Orientation="Vertical" Margin="5" Visibility="{Binding IsCheatingEnabled, Converter={StaticResource BoolToCollapsedConverter}}">
+                    <TextBlock FontSize="12" TextWrapping="Wrap" Margin="0,0,0,5" Visibility="{Binding IsValid, Converter={StaticResource BoolToCollapsedConverter}}">
+                        Start a game to see debug options.
+                    </TextBlock>
+                    <TextBlock FontSize="12" TextWrapping="Wrap" Margin="0,0,0,5" Visibility="{Binding IsValid, Converter={StaticResource BoolToVisibleConverter}}">
+                        Viewing and changing debug properties is considered cheating
+                        and can break the game. If you choose to click the following
+                        button to enable cheating, your game will not be saved.
+                    </TextBlock>
+                    <Button FontSize="12" Click="OnClickEnableCheating" Visibility="{Binding IsValid, Converter={StaticResource BoolToVisibleConverter}}">Enable cheating</Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+
+</UserControl>

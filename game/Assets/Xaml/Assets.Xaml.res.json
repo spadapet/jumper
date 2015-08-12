@@ -1,0 +1,25 @@
+{
+  "ApplicationResources.xaml":
+  {
+    "res:type": "file",
+    "file": "file:ApplicationResources.xaml"
+  },
+
+  "DebugControl.xaml":
+  {
+    "res:type": "file",
+    "file": "file:DebugControl.xaml"
+  },
+
+  "DebugPage.xaml":
+  {
+    "res:type": "file",
+    "file": "file:DebugPage.xaml"
+  },
+
+  "TitlePage.xaml":
+  {
+    "res:type": "file",
+    "file": "file:TitlePage.xaml"
+  }
+}

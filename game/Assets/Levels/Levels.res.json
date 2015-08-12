@@ -1,0 +1,13 @@
+{
+  "Test.level":
+  {
+    "res:type": "levelData",
+    "res:import": "file:Test.level.json"
+  },
+
+  "Test.tiles":
+  {
+    "res:type": "tileSet",
+    "res:import": "file:Test.tiles.json"
+  }
+}

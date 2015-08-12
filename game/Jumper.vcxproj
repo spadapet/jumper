@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{77f87806-9e5d-4c5b-9cfd-9a7cf6d7c551}</ProjectGuid>
+    <AppType>Metro</AppType>
+    <ConfigurationType>Application</ConfigurationType>
+    <ProjectName>Jumper</ProjectName>
+    <RootNamespace>Jumper</RootNamespace>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+  </PropertyGroup>
+  <Import Project="..\ffcore\msbuild\cpp.props" />
+  <PropertyGroup>
+    <JumperParseTypesDll>$(OutRoot)Release.$(XPlatform).Desktop\jumper.parsetypes\bin\jumper.parsetypes.dll</JumperParseTypesDll>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\ffcore\core\util</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\ffcore\core\ui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\ffcore\core\noesis\Include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>..\ffcore\core\noesis\Lib\$(XPlatform)\Noesis.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>Noesis.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Components\BoundingBoxComponent.cpp" />
+    <ClCompile Include="Components\CameraComponent.cpp" />
+    <ClCompile Include="Components\EntityTypeComponent.cpp" />
+    <ClCompile Include="Components\HitBoxComponent.cpp" />
+    <ClCompile Include="Components\LevelComponent.cpp" />
+    <ClCompile Include="Components\PositionToHitBoxComponent.cpp" />
+    <ClCompile Include="Components\TilesComponent.cpp" />
+    <ClCompile Include="Components\LogicStateComponent.cpp" />
+    <ClCompile Include="Components\RenderStateComponent.cpp" />
+    <ClCompile Include="Components\UpdateInputComponent.cpp" />
+    <ClCompile Include="Components\InputStateComponent.cpp" />
+    <ClCompile Include="Components\PlayerComponent.cpp" />
+    <ClCompile Include="Components\PositionComponent.cpp" />
+    <ClCompile Include="Components\PositionToBoundingBoxComponent.cpp" />
+    <ClCompile Include="Components\InputForcesComponent.cpp" />
+    <ClCompile Include="Components\TransformComponent.cpp" />
+    <ClCompile Include="Components\VelocityComponent.cpp" />
+    <ClCompile Include="Core\CameraView.cpp" />
+    <ClCompile Include="Core\FrameMemory.cpp" />
+    <ClCompile Include="Core\Globals.cpp" />
+    <ClCompile Include="Core\Helpers.cpp" />
+    <ClCompile Include="Core\LevelData.cpp" />
+    <ClCompile Include="Core\Options.cpp" />
+    <ClCompile Include="Core\Player.cpp" />
+    <ClCompile Include="Core\TileSet.cpp" />
+    <ClCompile Include="Core\Vars.cpp" />
+    <ClCompile Include="Logic\CameraLogic.cpp" />
+    <ClCompile Include="Logic\DebugCameraLogic.cpp" />
+    <ClCompile Include="Logic\LogicBase.cpp" />
+    <ClCompile Include="Logic\LogicHelpers.cpp" />
+    <ClCompile Include="Logic\PlayerLogic.cpp" />
+    <ClCompile Include="Render\LayerRender.cpp" />
+    <ClCompile Include="Render\PlayerRender.cpp" />
+    <ClCompile Include="Render\RenderBase.cpp" />
+    <ClCompile Include="Render\RenderWrapper.cpp" />
+    <ClCompile Include="Services\CollisionService.cpp" />
+    <ClCompile Include="Services\EntityLogicService.cpp" />
+    <ClCompile Include="Services\EntityRenderService.cpp" />
+    <ClCompile Include="Services\EntityFactoryService.cpp" />
+    <ClCompile Include="Services\RenderQueueService.cpp" />
+    <ClCompile Include="Services\SystemRenderService.cpp" />
+    <ClCompile Include="States\AppState.cpp" />
+    <ClCompile Include="States\DebugState.cpp" />
+    <ClCompile Include="States\LoadLevelState.cpp" />
+    <ClCompile Include="States\PlayGameState.cpp" />
+    <ClCompile Include="States\PlayLevelState.cpp" />
+    <ClCompile Include="States\TitleState.cpp" />
+    <ClCompile Include="Systems\BoundingBoxSystem.cpp" />
+    <ClCompile Include="Systems\CameraViewSystem.cpp" />
+    <ClCompile Include="Systems\CollisionSystem.cpp" />
+    <ClCompile Include="Systems\DebugSystem.cpp" />
+    <ClCompile Include="Systems\EntityCollisionSystem.cpp" />
+    <ClCompile Include="Systems\EntityDeleteSystem.cpp" />
+    <ClCompile Include="Systems\TileCollisionSystem.cpp" />
+    <ClCompile Include="Systems\RenderSystem.cpp" />
+    <ClCompile Include="Systems\InputEventsSystem.cpp" />
+    <ClCompile Include="Systems\SystemBase.cpp" />
+    <ClCompile Include="Systems\TransformSystem.cpp" />
+    <ClCompile Include="Systems\LogicSystem.cpp" />
+    <ClCompile Include="UI\Components.cpp" />
+    <ClCompile Include="UI\DebugControl.cpp" />
+    <ClCompile Include="UI\DebugPage.cpp" />
+    <ClCompile Include="UI\FailurePage.xaml.cpp">
+      <DependentUpon>UI\FailurePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClInclude Include="App.xaml.h">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Components\BoundingBoxComponent.h" />
+    <ClInclude Include="Components\CameraComponent.h" />
+    <ClInclude Include="Components\EntityTypeComponent.h" />
+    <ClInclude Include="Components\HitBoxComponent.h" />
+    <ClInclude Include="Components\LevelComponent.h" />
+    <ClInclude Include="Components\TilesComponent.h" />
+    <ClInclude Include="Components\LogicStateComponent.h" />
+    <ClInclude Include="Components\RenderStateComponent.h" />
+    <ClInclude Include="Components\UpdateInputComponent.h" />
+    <ClInclude Include="Components\InputStateComponent.h" />
+    <ClInclude Include="Components\PlayerComponent.h" />
+    <ClInclude Include="Components\PositionComponent.h" />
+    <ClInclude Include="Components\PositionToBoundingBoxComponent.h" />
+    <ClInclude Include="Components\PositionToHitBoxComponent.h" />
+    <ClInclude Include="Components\InputForcesComponent.h" />
+    <ClInclude Include="Components\TransformComponent.h" />
+    <ClInclude Include="Components\VelocityComponent.h" />
+    <ClInclude Include="Core\CameraArea.h" />
+    <ClInclude Include="Core\CameraView.h" />
+    <ClInclude Include="Core\FrameMemory.h" />
+    <ClInclude Include="Core\Globals.h" />
+    <ClInclude Include="Core\Helpers.h" />
+    <ClInclude Include="Core\LevelData.h" />
+    <ClInclude Include="Core\Options.h" />
+    <ClInclude Include="Core\Player.h" />
+    <ClInclude Include="Core\TileSet.h" />
+    <ClInclude Include="Core\Vars.h" />
+    <ClInclude Include="Logic\CameraLogic.h" />
+    <ClInclude Include="Logic\DebugCameraLogic.h" />
+    <ClInclude Include="Logic\LogicBase.h" />
+    <ClInclude Include="Logic\LogicHelpers.h" />
+    <ClInclude Include="Logic\PlayerLogic.h" />
+    <ClInclude Include="pch.h" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="App.xaml.cpp">
+      <DependentUpon>App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <ClInclude Include="Render\LayerRender.h" />
+    <ClInclude Include="Render\PlayerRender.h" />
+    <ClInclude Include="Render\RenderBase.h" />
+    <ClInclude Include="Render\RenderWrapper.h" />
+    <ClInclude Include="Services\AppService.h" />
+    <ClInclude Include="Services\CameraService.h" />
+    <ClInclude Include="Services\CollisionService.h" />
+    <ClInclude Include="Services\EntityLogicService.h" />
+    <ClInclude Include="Services\EntityRenderService.h" />
+    <ClInclude Include="Services\EntityFactoryService.h" />
+    <ClInclude Include="Services\GameService.h" />
+    <ClInclude Include="Services\LevelService.h" />
+    <ClInclude Include="Services\RenderQueueService.h" />
+    <ClInclude Include="Services\SystemRenderService.h" />
+    <ClInclude Include="Services\ViewService.h" />
+    <ClInclude Include="States\AppState.h" />
+    <ClInclude Include="States\DebugState.h" />
+    <ClInclude Include="States\LoadLevelState.h" />
+    <ClInclude Include="States\PlayGameState.h" />
+    <ClInclude Include="States\PlayLevelState.h" />
+    <ClInclude Include="States\TitleState.h" />
+    <ClInclude Include="Systems\BoundingBoxSystem.h" />
+    <ClInclude Include="Systems\CameraViewSystem.h" />
+    <ClInclude Include="Systems\CollisionSystem.h" />
+    <ClInclude Include="Systems\DebugSystem.h" />
+    <ClInclude Include="Systems\EntityCollisionSystem.h" />
+    <ClInclude Include="Systems\EntityDeleteSystem.h" />
+    <ClInclude Include="Systems\TileCollisionSystem.h" />
+    <ClInclude Include="Systems\RenderSystem.h" />
+    <ClInclude Include="Systems\InputEventsSystem.h" />
+    <ClInclude Include="Systems\SystemBase.h" />
+    <ClInclude Include="Systems\TransformSystem.h" />
+    <ClInclude Include="Systems\LogicSystem.h" />
+    <ClInclude Include="UI\Components.h" />
+    <ClInclude Include="UI\DebugControl.h" />
+    <ClInclude Include="UI\DebugPage.h" />
+    <ClInclude Include="UI\FailurePage.xaml.h">
+      <DependentUpon>UI\FailurePage.xaml</DependentUpon>
+    </ClInclude>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ffcore\core\util\util-metro.vcxproj">
+      <Project>{eff8144d-f91e-4bbd-b09b-d6db6b3a5512}</Project>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResJson Include="Assets\Assets.res.json" />
+    <ResJson Include="Assets\Values.res.json" />
+    <ResJson Include="Assets\Levels\Levels.res.json" />
+    <ResJson Include="Assets\Xaml\Assets.Xaml.res.json">
+      <FileType>Document</FileType>
+    </ResJson>
+    <ResJsonReference Condition="Exists('$(JumperParseTypesDll)')" Include="$(JumperParseTypesDll)" />
+    <ResJsonReference Condition="!Exists('$(JumperParseTypesDll)')" Include="..\msbuild\jumper.parsetypes.dll" />
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ffcore\core\noesis\Bin\$(XPlatform)\Noesis.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Xaml\ApplicationResources.xaml">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Assets\Xaml\TitlePage.xaml">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Assets\Xaml\DebugControl.xaml">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Assets\Xaml\DebugPage.xaml">
+      <FileType>Document</FileType>
+    </None>
+    <Page Include="UI\FailurePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Logo\SplashScreen.scale-100.png" />
+    <Image Include="Assets\Logo\SplashScreen.scale-125.png" />
+    <Image Include="Assets\Logo\SplashScreen.scale-150.png" />
+    <Image Include="Assets\Logo\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Logo\SplashScreen.scale-400.png" />
+    <Image Include="Assets\Logo\Square150x150Logo.scale-100.png" />
+    <Image Include="Assets\Logo\Square150x150Logo.scale-125.png" />
+    <Image Include="Assets\Logo\Square150x150Logo.scale-150.png" />
+    <Image Include="Assets\Logo\Square150x150Logo.scale-200.png" />
+    <Image Include="Assets\Logo\Square150x150Logo.scale-400.png" />
+    <Image Include="Assets\Logo\Square310x310Logo.scale-100.png" />
+    <Image Include="Assets\Logo\Square310x310Logo.scale-125.png" />
+    <Image Include="Assets\Logo\Square310x310Logo.scale-150.png" />
+    <Image Include="Assets\Logo\Square310x310Logo.scale-200.png" />
+    <Image Include="Assets\Logo\Square310x310Logo.scale-400.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.scale-100.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.scale-125.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.scale-150.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.scale-200.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.scale-400.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-16.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-20.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-20_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-24.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-256.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-30.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-30_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-32.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-36.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-36_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-40.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-40_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-48.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-60.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-60_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-64.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-64_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-72.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-72_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-80.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-80_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-96.png" />
+    <Image Include="Assets\Logo\Square44x44Logo.targetsize-96_altform-unplated.png" />
+    <Image Include="Assets\Logo\Square71x71Logo.scale-100.png" />
+    <Image Include="Assets\Logo\Square71x71Logo.scale-125.png" />
+    <Image Include="Assets\Logo\Square71x71Logo.scale-150.png" />
+    <Image Include="Assets\Logo\Square71x71Logo.scale-200.png" />
+    <Image Include="Assets\Logo\Square71x71Logo.scale-400.png" />
+    <Image Include="Assets\Logo\SquareLogo.png">
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Logo\StoreLogo.scale-100.png" />
+    <Image Include="Assets\Logo\StoreLogo.scale-125.png" />
+    <Image Include="Assets\Logo\StoreLogo.scale-150.png" />
+    <Image Include="Assets\Logo\StoreLogo.scale-200.png" />
+    <Image Include="Assets\Logo\StoreLogo.scale-400.png" />
+    <Image Include="Assets\Logo\Wide310x150Logo.scale-100.png" />
+    <Image Include="Assets\Logo\Wide310x150Logo.scale-125.png" />
+    <Image Include="Assets\Logo\Wide310x150Logo.scale-150.png" />
+    <Image Include="Assets\Logo\Wide310x150Logo.scale-200.png" />
+    <Image Include="Assets\Logo\Wide310x150Logo.scale-400.png" />
+    <Image Include="Assets\Logo\WideLogo.png">
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
+  </ItemGroup>
+  <Import Project="..\ffcore\msbuild\cpp.targets" />
+</Project>

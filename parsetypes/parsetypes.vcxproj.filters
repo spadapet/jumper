@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="..\game\Core\LevelData.cpp">
+      <Filter>Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\game\Core\TileSet.cpp">
+      <Filter>Types</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="module.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\game\Core\LevelData.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\Core\TileSet.h">
+      <Filter>Types</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Types">
+      <UniqueIdentifier>{d9b084d4-700d-4d28-b226-0000332e3f94}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
