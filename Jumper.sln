@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29804.240
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34419.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jumper", "game\Jumper.vcxproj", "{77F87806-9E5D-4C5B-9CFD-9A7CF6D7C551}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util.dxtex", "ffcore\core\dxtex\dxtex-metro.vcxproj", "{D6F468CF-1B2B-46E1-91DD-2C36AC216E7A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util.zlib", "ffcore\core\zlib\zlib-metro.vcxproj", "{49F8C1B7-6D04-44B7-82BA-A813D826B2F1}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util.ui", "ffcore\core\ui\ui-metro.vcxproj", "{09216E23-A273-4BB5-B223-E8B86A06D804}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E1ABBA80-AB79-45AC-B565-C7E91FCA9339}"
 	ProjectSection(SolutionItems) = preProject
@@ -64,14 +62,6 @@ Global
 		{49F8C1B7-6D04-44B7-82BA-A813D826B2F1}.Release|x64.Build.0 = Release|x64
 		{49F8C1B7-6D04-44B7-82BA-A813D826B2F1}.Release|x86.ActiveCfg = Release|Win32
 		{49F8C1B7-6D04-44B7-82BA-A813D826B2F1}.Release|x86.Build.0 = Release|Win32
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Debug|x64.ActiveCfg = Debug|x64
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Debug|x64.Build.0 = Debug|x64
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Debug|x86.ActiveCfg = Debug|Win32
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Debug|x86.Build.0 = Debug|Win32
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Release|x64.ActiveCfg = Release|x64
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Release|x64.Build.0 = Release|x64
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Release|x86.ActiveCfg = Release|Win32
-		{09216E23-A273-4BB5-B223-E8B86A06D804}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
